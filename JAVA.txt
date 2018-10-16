@@ -1,0 +1,821 @@
+LAB2 Getting Started
+--------------------------
+/2.1
+import java.util.*;
+import java.io.*;
+public class ProtectedInheritance {
+
+	public static void main(String[] args) {
+		Scanner sc =new Scanner(System.in);
+			String[] input=new String[5];
+		for(int i=0;i<5;i++)
+		{input[i]=sc.next();;
+		}
+		System.out.println("First Name: " + input[0]); 
+		System.out.println("Last Name: " + input[1]); 
+		System.out.println("Gender: " + input[2]); 
+		System.out.println("Age: " + input[3]); 
+		System.out.println("Weight: " + input[4]);
+		}
+             }
+O/P-
+Supratim
+Chakraborty
+M
+21
+56
+First Name: Supratim
+Last Name: Chakraborty
+Gender: M
+Age: 21
+Weight: 56
+
+public class ProtectedInheritance {
+
+	public static void main(String[] args) {
+
+			String[] input=new String[args.length];
+		for(int i=0;i<input.length;i++)
+		{input[i]=args[i];
+		}
+		System.out.println("First Name: " + input[0]); 
+		System.out.println("Last Name: " + input[1]); 
+		System.out.println("Gender: " + input[2]); 
+		System.out.println("Age: " + input[3]); 
+		System.out.println("Weight: " + input[4]);
+				
+				
+		
+		  
+	}
+
+}
+
+
+First Name: Supratim
+Last Name: Chakraborty
+Gender: M
+Age: 21
+Weight: 56
+-------------------------------------------------------
+Lab 3: Basic Language Constructs
+------------------------------------------------
+/3.1
+public class ProtectedInheritance {
+
+	public static void main(String[] args) {
+		System.out.println("Enter a number : ");
+		int n=Integer.parseInt(args[0]);
+		if(n>0)
+			System.out.println("The number is positive");
+
+		else if(n<0)
+			System.out.println("The number is negative");
+
+		else
+			
+			System.out.println("The number is neither positive nor negative" );
+		}
+		}
+
+Enter a number : 23
+The number is positive
+Enter a number : -9
+The number is negative
+Enter a number : 0
+The number is neither positive nor negative
+--------------------------------------------
+-------------------------------------------
+Lab 4: Classes and Objects
+----------------------------------------
+4.1a
+(USING SETTERS AND GETTERS)
+public class Person 
+{
+	private String firstname;
+	private String lastname;
+	private char gender;
+   
+	public String getfirstname()
+    {return this.firstname;
+    }
+    public void setfirstname(String fn)
+    {this.firstname=fn;
+    }
+    public String getlastname()
+    {return this.lastname;
+    }
+    public void setlastname(String ln)
+    {this.lastname=ln;
+    }
+    public char getgender()
+    {return this.gender;
+    }
+    public void setgender(char gen)
+    {this.gender=gen;
+    }	
+
+} 
+
+public class Num {
+
+	public static void main(String[] args) {
+		
+		String[] input=new String[3];
+		for(int i=0;i<3;i++)
+		{input[i]=args[i];
+		}
+		
+		
+		
+		
+		 Person per=new Person();
+	      per.setfirstname(input[0]);
+	      per.setlastname(input[1]);
+	      per.setgender(input[2].charAt(0));
+	      System.out.println(per.getfirstname() + "\n" + per.getlastname() + "\n" + per.getgender());
+}
+}
+
+
+CMD line argument: Supratim Chakraborty M
+o/p
+Supratim
+Chakraborty
+M
+
+4.1b.(USING CONSTRUCTORS)
+
+public class Person 
+{
+	String firstname;
+	String lastname;
+	char gender;
+   
+	Person(String fn,String ln,char gen)
+	{this.firstname=fn;
+	this.lastname=ln;
+	this.gender=gen;
+	}
+	void display(){System.out.println(firstname + "\n" + lastname + "\n" + gender);
+	}
+	
+	
+} 
+
+
+public class Num {
+
+	public static void main(String[] args) {
+		
+		String[] input=new String[3];
+		for(int i=0;i<3;i++)
+		{input[i]=args[i];
+		}
+		
+		
+		
+		
+		 Person per = new Person(input[0],input[1],input[2].charAt(0));
+	     per.display();
+}
+}
+
+CMD line argument: Supratim Chakraborty M
+o/p
+Supratim
+Chakraborty
+M
+-------------------------------------------------
+-----------------------------------------------
+Lab 5: Extending Classes
+-------------------------------------------
+5.1
+
+public class Person 
+{
+	String name;
+	float age;
+   
+	String getname()
+    {
+	return this.name;
+    }
+
+void setname(String n)
+  {
+  this.name=n;
+  }
+
+
+float getage()
+{
+return this.age;
+}
+
+void setage(float a)
+{
+this.age=a;
+}
+
+	
+}
+
+
+public class Account extends Person{
+	private long accNum;
+	private double balance;
+	Person accHolder=new Person();
+	void deposit(double b)
+	     {
+		if (b > 0.0)
+			balance = balance + b;
+	    } 
+	void withdraw(double a)
+	    {
+		  balance = balance - a ;
+	    }
+	
+	double getBalance()
+	    {
+		return this.balance;
+	    }
+	
+	void setBalance(double bal)
+	  {
+	  this.balance=bal;
+	  }
+	
+	
+	long getaccNum()
+    {
+	return this.accNum;
+    }
+
+void setaccNum(long acno)
+  {
+  this.accNum=acno;
+  }
+
+
+}
+
+
+
+import java.util.Random;
+
+public class BankMain {
+
+	public static void main(String[] args) 
+	{
+				
+		          Random ran= new Random();
+			      Account ac1=new Account();
+			      Account ac2=new Account();
+			      ac1.setname("Smith");
+			      ac1.setage(18);
+			      ac1.setaccNum(Math.abs(ran.nextLong()));
+			      ac1.setBalance(2000);
+			      ac1.deposit(2000);
+			      System.out.println("Customer Info:  \nName: "+ac1.getname() +" \nAge:"+ac1.getage() +"\nAccount Number: "+ac1.getaccNum());
+			      System.out.println("Updated balance :"+ ac1.getBalance());
+	              ac2.setname("Kathy");
+			      ac2.setage(18);
+			      ac1.setaccNum(Math.abs(ran.nextLong()));
+			      ac2.setBalance(3000);
+			      ac2.withdraw(2000);
+			      System.out.println("Customer Info:  \nName: "+ac2.getname() +" \nAge:"+ac2.getage() +"\nAccount Number: "+ac2.getaccNum());
+			      System.out.println("Updated balance :"+ ac2.getBalance());
+			      
+			      
+			      
+			    
+		}
+		
+
+	}
+
+
+
+
+O/p
+
+Customer Info:  
+Name: Smith 
+Age:18.0
+Account Number: 5966302828166657663
+Updated balance :4000.0
+Customer Info:  
+Name: Kathy 
+Age:18.0
+Account Number: 0
+Updated balance :1000.0
+
+------------------------------------------------------
+
+5.2
+public class Account {
+	boolean withdraw(){
+		return true;
+	}
+
+}
+
+public class SavingsAccount extends Account {
+	final double minbal=5000.00;
+	boolean withdraw(double cur_bal,double wdamt){
+		if((cur_bal-wdamt)>=minbal)
+			return true;
+		else
+		return false;
+	}
+		
+
+}
+
+public class CurrentAccount extends Account {
+	final double ovrdrft_lmt=5000.00;
+	boolean withdraw(double ovrdrft_amt){
+		if(ovrdrft_amt<=ovrdrft_lmt)
+			return true;
+		else
+		return false;
+	}
+}
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+	SavingsAccount sa= new SavingsAccount();
+	CurrentAccount ca= new CurrentAccount();
+	System.out.println("Enter Savings balance: ");
+    Scanner sc= new Scanner(System.in);
+    double curbal=sc.nextDouble();
+    if(curbal!=0)
+    {
+    	System.out.println("Enter withdraw balance: ");
+        double wdbal=sc.nextDouble();
+    	if(sa.withdraw(curbal,wdbal))
+           {
+    		System.out.println("Withdrawal done.");
+    		System.out.println("Current balance: "+(curbal-wdbal));
+           }
+    	else
+    	   {
+    		System.out.println("Withdrawal can't be done.");
+    	   }
+    }
+    
+    else 
+    {   System.out.println("Enter overdraft balance: ");
+        double wdbal=sc.nextDouble();
+    	if(ca.withdraw(wdbal))
+    	{
+    		System.out.println("Overdraft done.");
+    		System.out.println("Current balance: "+(curbal-wdbal));
+    	}
+    	else
+    	{
+    		System.out.println("Overdraft can't be done.");
+    	}
+    }
+    
+    
+  }
+    
+    
+}
+
+O/p
+Enter Savings balance: 
+0
+Enter overdraft balance: 
+4000
+Overdraft done.
+Current balance: -4000.0
+
+Enter Savings balance: 
+0
+Enter overdraft balance: 
+6000
+Overdraft can't be done.
+
+Enter Savings balance: 
+9000
+Enter withdraw balance: 
+3000
+Withdrawal done.
+Current balance: 6000.0
+
+Enter Savings balance: 
+6000
+Enter withdraw balance: 
+2000
+Withdrawal can't be done.
+-------------------------------------------------------
+Lab 6: Abstract classes, Interfaces and Packages
+-----------------------------------------------------
+6.2
+public interface Account {
+	
+	 boolean withdraw(double p);
+	
+	
+
+}
+class CSAccount implements Account {
+	final double minbal=5000.00;
+	final double ovrdrft_lmt=5000.00;
+	@Override
+	public boolean withdraw (double ovrdrft_amt){
+		
+		if(ovrdrft_amt<=ovrdrft_lmt)
+			return true;
+		else
+		return false;
+	}
+
+	public boolean withdraw(double cur_bal,double wdamt){
+		if((cur_bal-wdamt)>=minbal)
+			return true;
+		else
+		return false;
+	}
+	
+	
+	
+	
+}
+
+import java.util.Scanner;
+
+public class Main  {
+
+	public static void main(String[] args) {
+	CSAccount a= new CSAccount();
+	System.out.println("Enter Savings balance: ");
+    Scanner sc= new Scanner(System.in);
+    double curbal=sc.nextDouble();
+    if(curbal!=0)
+    {
+    	System.out.println("Enter withdraw balance: ");
+        double wdbal=sc.nextDouble();
+    	if(a.withdraw(curbal,wdbal))
+           {
+    		System.out.println("Withdrawal done.");
+    		System.out.println("Current balance: "+(curbal-wdbal));
+           }
+    	else
+    	   {
+    		System.out.println("Withdrawal can't be done.");
+    	   }
+    }
+    
+    else 
+    {   System.out.println("Enter overdraft balance: ");
+        double wdbal=sc.nextDouble();
+    	if(a.withdraw(wdbal))
+    	{
+    		System.out.println("Overdraft done.");
+    		System.out.println("Current balance: "+(curbal-wdbal));
+    	}
+    	else
+    	{
+    		System.out.println("Overdraft can't be done.");
+    	}
+    }
+    
+    
+  }
+    
+    
+}
+
+op
+
+Enter Savings balance: 
+8000
+Enter withdraw balance: 
+4000
+Withdrawal can't be done.
+
+---------------------------------------------------
+----------------------------------------------------
+Lab 7: Exception Handling
+------------------------------------------------------
+7.1
+class MyException extends Exception{
+	   
+}
+public class Person 
+{
+	private String firstname;
+	private String lastname;
+	private char gender;
+   
+	public String getfirstname()
+    {return this.firstname;
+    }
+    public void setfirstname(String fn)
+    {
+    
+    try{
+		if(fn == null || fn.isEmpty())
+		throw new MyException();
+		else 
+		this.firstname=fn;
+	
+	}
+	catch(MyException e){
+		System.out.println("First Name should not be blank") ;
+		e.printStackTrace() ;
+	}
+    
+    
+    }
+    public String getlastname()
+    {return this.lastname;
+    }
+    public void setlastname(String ln)
+    {try{
+		if(ln == null || ln.isEmpty())
+		throw new MyException();
+		else 
+		this.lastname=ln;
+	
+	}
+	catch(MyException e){
+		System.out.println("Last Name should not be blank") ;
+		e.printStackTrace() ;
+	}
+    
+    }
+    public char getgender()
+    {return this.gender;
+    }
+    public void setgender(char gen)
+    {this.gender=gen;
+    }	
+    
+}
+
+
+import java.util.Scanner;
+
+public class Num {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		
+		
+		
+		 Person per=new Person();
+		 System.out.println("ENTER FIRST NAME");
+		 per.setfirstname(sc.nextLine());
+	      if(per.getfirstname()!=null)
+	      System.out.println("ENTER LAST NAME");
+	      per.setlastname(sc.nextLine());
+	      if(per.getlastname()!=null)
+	      {
+	    	  System.out.println("ENTER GENDER");
+	    	per.setgender(sc.next().charAt(0));
+	      System.out.println(per.getfirstname() + "\n" + per.getlastname() + "\n" + per.getgender());
+	      }
+	}
+}
+
+O/P
+
+
+ENTER FIRST NAME
+sUPRATIM
+ENTER LAST NAME
+
+Last Name should not be blank
+exception.MyException
+	at exception.Person.setlastname(Person.java:37)
+	at exception.Num.main(Num.java:18)
+
+-----------------------------------------------------------
+7.2
+class MyException extends Exception{
+   
+}
+public class Person 
+{
+	String name;
+	float age;
+   
+	String getname()
+    {
+	return this.name;
+    }
+
+void setname(String n)
+  {
+  this.name=n;
+  }
+
+
+float getage()
+{
+return this.age;
+}
+
+void setage(float a)
+{
+	try{
+		if(a<=15)
+		throw new MyException();
+		else 
+		this.age=a;
+	
+	}
+	catch(MyException e){
+		System.out.println(getname()+"'s age should be greater than 15") ;
+		e.printStackTrace() ;
+	}
+}
+
+	
+}
+
+
+public class Account extends Person{
+	private long accNum;
+	private double balance;
+	Person accHolder=new Person();
+	void deposit(double b)
+	     {
+		if (b > 0.0)
+			balance = balance + b;
+	    } 
+	void withdraw(double a)
+	    {
+		  balance = balance - a ;
+	    }
+	
+	double getBalance()
+	    {
+		return this.balance;
+	    }
+	
+	void setBalance(double bal)
+	  {
+	  this.balance=bal;
+	  }
+	
+	
+	long getaccNum()
+    {
+	return this.accNum;
+    }
+
+void setaccNum(long acno)
+  {
+  this.accNum=acno;
+  }
+
+
+}
+
+
+
+import java.util.Random;
+
+public class BankMain {
+
+	public static void main(String[] args) 
+	{
+				
+		          Random ran= new Random();
+			      Account ac1=new Account();
+			      Account ac2=new Account();
+			      ac1.setname(args[0]);
+			      ac1.setage(Float.parseFloat(args[1]));
+			      if(ac1.getage()!=0)
+			      {
+			      ac1.setaccNum(Math.abs(ran.nextLong()));
+			      ac1.setBalance(2000);
+			      ac1.deposit(2000);
+			      System.out.println("Customer Info:  \nName: "+ac1.getname() +" \nAge:"+ac1.getage() +"\nAccount Number: "+ac1.getaccNum());
+			      System.out.println("Updated balance :"+ ac1.getBalance());
+			      }
+			      ac2.setname(args[2]);
+			      ac2.setage(Float.parseFloat(args[3]));
+			      if(ac2.getage()!=0)
+			      {
+			      
+			      ac1.setaccNum(Math.abs(ran.nextLong()));
+			      ac2.setBalance(3000);
+			      ac2.withdraw(2000);
+			      System.out.println("Customer Info:  \nName: "+ac2.getname() +" \nAge:"+ac2.getage() +"\nAccount Number: "+ac2.getaccNum());
+			      System.out.println("Updated balance :"+ ac2.getBalance());
+			      }
+			      
+			      
+			    
+		}
+		
+
+	}
+
+
+O/p
+
+Smith's age should be greater than 15
+MyException
+	at Person.setage(Person.java:29)
+	at BankMain.main(BankMain.java:13)
+Customer Info:  
+Name: Kathy 
+Age:16.0
+Account Number: 0
+Updated balance :1000.0
+
+
+-----------------------------------------------
+------------------------------------------------
+Lab 8: Input Output Classes
+--------------------------------------------------
+8.1
+import java.io.*;
+    import java.util.*;
+ 
+public class Num
+{
+    public static void main (String [] args)throws IOException
+    {
+        FileReader fr = new FileReader("D://i.txt");
+         
+        BufferedReader br = new BufferedReader(fr);
+        StringBuffer sb=new StringBuffer(); 
+        String data;
+         
+        while ((data = br.readLine()) != null) 
+        sb.append(data);
+        fr.close();
+         String str=sb.reverse().toString();
+        FileWriter fw = new FileWriter("D://i.txt");
+        BufferedWriter wr = new BufferedWriter(fw);
+         wr.write(str);
+         wr.close();
+        
+       
+     }
+}
+
+OP-
+How are you?
+
+changes to
+
+?uoy era woH
+-------------------------------------------------- 
+8.2
+   import java.io.*;
+    import java.util.*;
+ 
+public class Num
+{
+   public static void main( String[] args )
+   {	
+      try {
+	     File file = new File("D:\\numbers.txt");
+	     StringBuffer sb=new StringBuffer(); 
+	      file.createNewFile();
+	    FileWriter fw = new FileWriter("D://numbers.txt");
+        BufferedWriter wr = new BufferedWriter(fw);
+       wr.write("0,1,2,3,4,5,6,7,8,9,10");
+       wr.close();
+    	Scanner sc = new Scanner(file);
+               String[] word = sc.next().split(",");
+               for(String w:word){
+               if(Integer.parseInt(w)%2==0)
+               System.out.println(w);
+               }
+            
+    	
+    	} catch (IOException e) {
+    		System.out.println("Exception Occurred:");
+	        e.printStackTrace();
+	  }
+   
+   }
+   }
+
+Inside the file: 0,1,2,3,4,5,6,7,8,9,10
+In the console:
+0
+2
+4
+6
+8
+10
+
+------------------------------------------------------
+
+
