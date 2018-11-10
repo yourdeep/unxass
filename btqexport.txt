@@ -1,0 +1,12 @@
+.LOGON 10.74.161.248/td_user20,td_user20;
+.EXPORT FILE = d:\out.csv;
+.SET SEPARATOR ','
+.SET WIDTH 300;
+ 
+SELECT * FROM employee_stg;
+ 
+.LOGOFF
+.EXIT
+11:29 AM 2/7/2018
+
+11:30 AM 2/7/2018
